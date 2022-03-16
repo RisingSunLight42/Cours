@@ -47,9 +47,9 @@ def b(i):
         felicite.grid_remove()
 
 # Définit le label de titre, des deux textes explications, crée la frame contenant les boutons et crée la liste des boutons
-titre = Label (maFenetre,text='Le rallye des portes ouvertes : la question NSI',font=('Comic',36),height=3,width=60)
-texte1 = Label (maFenetre, text = "Activez les cases ci-dessous pour obtenir 107 !",font=('Arial',20),height=2)
-texte2 = Label (maFenetre,text = "La réponse attendue est le nombre qui va apparaître dans les cases",font=('Arial',20),height=2)
+titre = Label (maFenetre,text='Le rallye des portes ouvertes : la question NSI',font=('Comic',36))
+texte1 = Label (maFenetre, text = "Activez les cases ci-dessous pour obtenir 107 !",font=('Arial',20))
+texte2 = Label (maFenetre,text = "La réponse attendue est le nombre qui va apparaître dans les cases",font=('Arial',20))
 zoneBoutons = Frame (maFenetre,bg=couleur_fond_actif)
 bouton = [Button (zoneBoutons,text= 0,relief='ridge',bd=4,width=10 ,height=3 ,bg=couleur_fond_passif,fg=couleur_texte_passif,font=('Arial',18,'bold'),command= lambda x=i: b(x)) for i in range(8)]
 
@@ -59,17 +59,17 @@ felicite = Label(maFenetre,fg='purple',font=('Arial',16,'bold'),text='Bravo, not
 boutonZero = Button (maFenetre,text= "Remettre le compteur à 0",font=('Comic',24),bg=couleur_fond_passif,fg=couleur_texte_passif, command= zero)
 
 # Place les différents éléments sur la page
-titre.grid(row=0, column=0, columnspan=8)
-texte1.grid(row=1, column=0, columnspan=8)
-texte2.grid(row=2, column=0, columnspan=8)
+titre.grid(row=0, column=0, columnspan=8, pady=(20, 10))
+texte1.grid(row=1, column=0, columnspan=8, pady=(10, 10))
+texte2.grid(row=2, column=0, columnspan=8, pady=(10, 10))
 for i in range(8):
     # La droite étant le plus grand nombre de colonne, on utilise i pour réduire l'indice des colonnes et placer dans le bon ordre les boutons
     bouton[i].grid(row=3, column=7-i)
-zoneBoutons.grid(row=3, column=0, columnspan=8)
+zoneBoutons.grid(row=3, column=0, columnspan=8, padx=(20,20), pady=(10, 10))
 afficheur.grid(row=4, column=0, columnspan=8, pady=(10, 10))
 felicite.grid(row=5, column=0, columnspan=8, pady=(10, 10))
 felicite.grid_remove() # Masque le label de félicitation
-boutonZero.grid(row=6, column=0, columnspan=8, pady=(10, 10))
+boutonZero.grid(row=6, column=0, columnspan=8, pady=(10, 20))
 
 # Lancement de la fenêtre
-maFenetre.mainloop() 
+maFenetre.mainloop()
