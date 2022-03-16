@@ -5,11 +5,13 @@ couleur_fond_passif = "#345ac2"
 couleur_texte_passif = "#f0f8ff"
 couleur_fond_actif = "#283c74"
 couleur_texte_actif = "gold"
+couleur_fond_fenetre = "#ab9ae3"
 couleurs = [(couleur_fond_passif,couleur_texte_passif) for i in range(8)] # Crée la liste de 8 tuples de couleurs, un tuple par bouton
 
 # Création de la fenêtre avec son titre et mise en place du compteur pour avoir la valeur entrée par le visiteur
 maFenetre = Tk()
 maFenetre.title("Rallye de NSI")
+maFenetre.configure(bg=couleur_fond_fenetre)
 compteur = 0
 
 def zero ():
@@ -49,13 +51,16 @@ def b(i):
 # Définit le label de titre, des deux textes explications, crée la frame contenant les boutons et crée la liste des boutons
 titre = Label (maFenetre,
                text='Le rallye des portes ouvertes : la question NSI',
-               font=('Comic',36))
+               font=('Comic',36),
+               bg=couleur_fond_fenetre)
 texte1 = Label (maFenetre,
                 text = "Activez les cases ci-dessous pour obtenir 107 !",
-                font=('Arial',20))
+                font=('Arial',20),
+                bg=couleur_fond_fenetre)
 texte2 = Label (maFenetre,
                 text = "La réponse attendue est le nombre qui va apparaître dans les cases",
-                font=('Arial',20))
+                font=('Arial',20),
+                bg=couleur_fond_fenetre)
 zoneBoutons = Frame (maFenetre,
                      bg=couleur_fond_actif)
 bouton = [Button (zoneBoutons,
@@ -72,11 +77,13 @@ bouton = [Button (zoneBoutons,
 # Crée l'afficheur de la valeur crée, le message de félicitation et le bouton de mise à zéro
 afficheur = Label (maFenetre,
                    text=f"Valeur en cours : {compteur}",
-                   font=('Arial',20,'bold'))
+                   font=('Arial',20,'bold'),
+                   bg=couleur_fond_fenetre)
 felicite = Label(maFenetre,
                  fg='purple',
                  font=('Arial',16,'bold'),
-                 text='Bravo, notez bien la réponse, vous venez d\'obtenir le codage binaire de 107 !')
+                 text='Bravo, notez bien la réponse, vous venez d\'obtenir le codage binaire de 107 !',
+                 bg=couleur_fond_fenetre)
 boutonZero = Button (maFenetre,
                      text= "Remettre le compteur à 0",
                      font=('Comic',24),
