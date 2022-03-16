@@ -54,8 +54,8 @@ zoneBoutons = Frame (maFenetre,bg=couleur_fond_actif)
 bouton = [Button (zoneBoutons,text= 0,relief='ridge',bd=4,width=10 ,height=3 ,bg=couleur_fond_passif,fg=couleur_texte_passif,font=('Arial',18,'bold'),command= lambda x=i: b(x)) for i in range(8)]
 
 # Crée l'afficheur de la valeur crée, le message de félicitation et le bouton de mise à zéro
-afficheur = Label (maFenetre,text=f"Valeur en cours : {compteur}",height=2,font=('Arial',20,'bold'))
-felicite = Label(maFenetre,fg='purple',font=('Arial',16,'bold'),text='Bravo, notez bien la réponse, vous venez d\'obtenir le codage binaire de 107 !',height=2)
+afficheur = Label (maFenetre,text=f"Valeur en cours : {compteur}",font=('Arial',20,'bold'))
+felicite = Label(maFenetre,fg='purple',font=('Arial',16,'bold'),text='Bravo, notez bien la réponse, vous venez d\'obtenir le codage binaire de 107 !')
 boutonZero = Button (maFenetre,text= "Remettre le compteur à 0",font=('Comic',24),bg=couleur_fond_passif,fg=couleur_texte_passif, command= zero)
 
 # Place les différents éléments sur la page
@@ -66,10 +66,10 @@ for i in range(8):
     # La droite étant le plus grand nombre de colonne, on utilise i pour réduire l'indice des colonnes et placer dans le bon ordre les boutons
     bouton[i].grid(row=3, column=7-i)
 zoneBoutons.grid(row=3, column=0, columnspan=8)
-afficheur.grid(row=4, column=0, columnspan=8)
-felicite.grid(row=5, column=0, columnspan=8)
+afficheur.grid(row=4, column=0, columnspan=8, pady=(10, 10))
+felicite.grid(row=5, column=0, columnspan=8, pady=(10, 10))
 felicite.grid_remove() # Masque le label de félicitation
-boutonZero.grid(row=6, column=0, columnspan=8, pady=(0, 10))
+boutonZero.grid(row=6, column=0, columnspan=8, pady=(10, 10))
 
 # Lancement de la fenêtre
 maFenetre.mainloop() 
