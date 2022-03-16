@@ -51,7 +51,7 @@ def b(i):
 # Définit le label de titre, des deux textes explications, crée la frame contenant les boutons et crée la liste des boutons
 titre = Label (maFenetre,
                text='Le rallye des portes ouvertes : la question NSI',
-               font=('Comic',36),
+               font=('Comic',36, "underline"),
                bg=couleur_fond_fenetre)
 texte1 = Label (maFenetre,
                 text = "Activez les cases ci-dessous pour obtenir 107 !",
@@ -72,6 +72,7 @@ bouton = [Button (zoneBoutons,
                   bg=couleur_fond_passif,
                   fg=couleur_texte_passif,
                   font=('Arial',18,'bold'),
+                  cursor="hand2",
                   command= lambda x=i: b(x)) for i in range(8)]
 
 # Crée l'afficheur de la valeur crée, le message de félicitation et le bouton de mise à zéro
@@ -89,7 +90,8 @@ boutonZero = Button (maFenetre,
                      font=('Comic',22),
                      bg=couleur_fond_passif,
                      fg=couleur_texte_passif,
-                     command= zero)
+                     command= zero,
+                     cursor="hand2")
 
 # Place les différents éléments sur la page
 titre.grid(row=0, column=0, columnspan=8, pady=(20, 10))
