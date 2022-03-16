@@ -13,7 +13,7 @@ maFenetre.title("Rallye de NSI")
 compteur = 0
 
 def zero ():
-    """Fonction remettant à 0 tous les boutons
+    """Fonction remettant à 0 tous les boutons et retirant l'afficheur de félicitation
     """
     global compteur
     compteur = 0
@@ -24,17 +24,22 @@ def zero ():
     felicite.grid_remove()
 
 def b(i):
+    """Modifie le bouton d'une couleur et d'un texte suivant s'il est pressé ou pas
+
+    Args:
+        i (integer): Position du bouton pour modifier la bonne couleur et le bon bouton
+    """
     global compteur
-    if couleurs [i][0] == couleur_fond_passif :
+    if couleurs [i][0] == couleur_fond_passif : # Si la couleur est celle classique, passe le bouton en pressé
         couleurs[i] = (couleur_fond_actif, couleur_texte_actif)
         compteur = compteur + 2**i
         valeur = 1
-    else:
+    else: # Sinon passe le bouton en relâché
         couleurs[i] = (couleur_fond_passif,couleur_texte_passif)
         compteur = compteur - 2**i
         valeur = 0
     bouton[i].configure (text=valeur,bg=couleurs[i][0],fg=couleurs[i][1])
-          
+    # Modifie l'afficheur, si le compteur vaut 107, c'est gagné et on affiche le message
     afficheur.configure(text=f"Valeur en cours : {compteur}")
     if compteur == 107:
         felicite.grid()
