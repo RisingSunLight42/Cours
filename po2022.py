@@ -47,16 +47,42 @@ def b(i):
         felicite.grid_remove()
 
 # Définit le label de titre, des deux textes explications, crée la frame contenant les boutons et crée la liste des boutons
-titre = Label (maFenetre,text='Le rallye des portes ouvertes : la question NSI',font=('Comic',36))
-texte1 = Label (maFenetre, text = "Activez les cases ci-dessous pour obtenir 107 !",font=('Arial',20))
-texte2 = Label (maFenetre,text = "La réponse attendue est le nombre qui va apparaître dans les cases",font=('Arial',20))
-zoneBoutons = Frame (maFenetre,bg=couleur_fond_actif)
-bouton = [Button (zoneBoutons,text= 0,relief='ridge',bd=4,width=10 ,height=3 ,bg=couleur_fond_passif,fg=couleur_texte_passif,font=('Arial',18,'bold'),command= lambda x=i: b(x)) for i in range(8)]
+titre = Label (maFenetre,
+               text='Le rallye des portes ouvertes : la question NSI',
+               font=('Comic',36))
+texte1 = Label (maFenetre,
+                text = "Activez les cases ci-dessous pour obtenir 107 !",
+                font=('Arial',20))
+texte2 = Label (maFenetre,
+                text = "La réponse attendue est le nombre qui va apparaître dans les cases",
+                font=('Arial',20))
+zoneBoutons = Frame (maFenetre,
+                     bg=couleur_fond_actif)
+bouton = [Button (zoneBoutons,
+                  text= 0,
+                  relief='ridge',
+                  bd=4,
+                  width=10,
+                  height=3,
+                  bg=couleur_fond_passif,
+                  fg=couleur_texte_passif,
+                  font=('Arial',18,'bold'),
+                  command= lambda x=i: b(x)) for i in range(8)]
 
 # Crée l'afficheur de la valeur crée, le message de félicitation et le bouton de mise à zéro
-afficheur = Label (maFenetre,text=f"Valeur en cours : {compteur}",font=('Arial',20,'bold'))
-felicite = Label(maFenetre,fg='purple',font=('Arial',16,'bold'),text='Bravo, notez bien la réponse, vous venez d\'obtenir le codage binaire de 107 !')
-boutonZero = Button (maFenetre,text= "Remettre le compteur à 0",font=('Comic',24),bg=couleur_fond_passif,fg=couleur_texte_passif, command= zero)
+afficheur = Label (maFenetre,
+                   text=f"Valeur en cours : {compteur}",
+                   font=('Arial',20,'bold'))
+felicite = Label(maFenetre,
+                 fg='purple',
+                 font=('Arial',16,'bold'),
+                 text='Bravo, notez bien la réponse, vous venez d\'obtenir le codage binaire de 107 !')
+boutonZero = Button (maFenetre,
+                     text= "Remettre le compteur à 0",
+                     font=('Comic',24),
+                     bg=couleur_fond_passif,
+                     fg=couleur_texte_passif,
+                     command= zero)
 
 # Place les différents éléments sur la page
 titre.grid(row=0, column=0, columnspan=8, pady=(20, 10))
