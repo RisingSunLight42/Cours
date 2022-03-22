@@ -26,7 +26,10 @@ def bezout(a,b):
         liste_div_eucl.append([reste, [1, a], [-(a//b), b]]) # Ajoute une liste où on calcule le reste
         a = b
         b = reste
-        
+    
+    # Vérifie si la liste est vide
+    if liste_div_eucl == []:
+        return f"{b} PGCD de {a}. Il n'y a pas de coefficients de Bézout possibles !"
     # Calcul des coefs de bézout
     indice = len(liste_div_eucl) - 1
     # Crée une liste dernier reste qui contient le point de départ des calculs
@@ -67,3 +70,5 @@ def bezout(a,b):
         print(afficheur_bezout(dernier_reste))
         indice -= 1
     return afficheur_bezout(dernier_reste)
+
+print(bezout(100,50))
