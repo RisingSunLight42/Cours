@@ -8,7 +8,7 @@ def afficheur_bezou(liste_bezou):
         string: Chaîne de caractères traduisant les listes de la fonction bézou
     """
     chaine = f"{liste_bezou[0]} = "
-    chaine += f"({liste_bezou[1][0]} * {liste_bezou[1][1]}) "
+    chaine += f"({liste_bezou[1][0]} * {liste_bezou[1][1]}) + "
     chaine += f"({liste_bezou[2][0]} * {liste_bezou[2][1]})"
     return chaine
 
@@ -31,6 +31,7 @@ def bezou(a,b):
     indice = len(liste_div_eucl) - 1
     # Crée une liste dernier reste qui contient le point de départ des calculs
     dernier_reste = [liste_div_eucl[indice][0], liste_div_eucl[indice][1], liste_div_eucl[indice][2]]
+    print(afficheur_bezou(dernier_reste))
     indice -= 1
     while indice >= 0:
         # Fait une liste des éléments pour le calcul de reste
@@ -63,5 +64,8 @@ def bezou(a,b):
             # Si l'élément à remplacer correspond à la seconde liste que l'on a remplacé, on combine en conséquence
             dernier_reste[indice_combinaison][0] = dernier_reste[indice_combinaison][0] + dernier_reste[indice_remplacement][1][0]
             dernier_reste[indice_remplacement] = dernier_reste[indice_remplacement][0] # On détruit la liste de liste pour conserver que la liste non combinée
+        print(afficheur_bezou(dernier_reste))
         indice -= 1
-    return dernier_reste
+    return afficheur_bezou(dernier_reste)
+
+bezou(559, 325)
