@@ -1,19 +1,19 @@
-def afficheur_bezou(liste_bezou):
-    """Permet d'afficher proprement les listes de Bézou
+def afficheur_bezout(liste_bezout):
+    """Permet d'afficher proprement les listes de bézout
 
     Args:
-        liste_bezou (list): Liste provenant de la fonction bezou()
+        liste_bezout (list): Liste provenant de la fonction bezout()
 
     Returns:
-        string: Chaîne de caractères traduisant les listes de la fonction bézou
+        string: Chaîne de caractères traduisant les listes de la fonction bézout
     """
-    chaine = f"{liste_bezou[0]} = "
-    chaine += f"({liste_bezou[1][0]} * {liste_bezou[1][1]}) + "
-    chaine += f"({liste_bezou[2][0]} * {liste_bezou[2][1]})"
+    chaine = f"{liste_bezout[0]} = "
+    chaine += f"({liste_bezout[1][0]} * {liste_bezout[1][1]}) + "
+    chaine += f"({liste_bezout[2][0]} * {liste_bezout[2][1]})"
     return chaine
 
-def bezou(a,b):
-    """Fonction retournant les coefs de Bézou.
+def bezout(a,b):
+    """Fonction retournant les coefs de bézout.
 
     Args:
         a (integer): Premier nombre, il doit être divisible par b
@@ -27,11 +27,11 @@ def bezou(a,b):
         a = b
         b = reste
         
-    # Calcul des coefs de Bézou
+    # Calcul des coefs de bézout
     indice = len(liste_div_eucl) - 1
     # Crée une liste dernier reste qui contient le point de départ des calculs
     dernier_reste = [liste_div_eucl[indice][0], liste_div_eucl[indice][1], liste_div_eucl[indice][2]]
-    print(afficheur_bezou(dernier_reste))
+    print(afficheur_bezout(dernier_reste))
     indice -= 1
     while indice >= 0:
         # Fait une liste des éléments pour le calcul de reste
@@ -64,8 +64,6 @@ def bezou(a,b):
             # Si l'élément à remplacer correspond à la seconde liste que l'on a remplacé, on combine en conséquence
             dernier_reste[indice_combinaison][0] = dernier_reste[indice_combinaison][0] + dernier_reste[indice_remplacement][1][0]
             dernier_reste[indice_remplacement] = dernier_reste[indice_remplacement][0] # On détruit la liste de liste pour conserver que la liste non combinée
-        print(afficheur_bezou(dernier_reste))
+        print(afficheur_bezout(dernier_reste))
         indice -= 1
-    return afficheur_bezou(dernier_reste)
-
-bezou(559, 325)
+    return afficheur_bezout(dernier_reste)
