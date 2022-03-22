@@ -1,3 +1,17 @@
+def afficheur_bezou(liste_bezou):
+    """Permet d'afficher proprement les listes de Bézou
+
+    Args:
+        liste_bezou (list): Liste provenant de la fonction bezou()
+
+    Returns:
+        string: Chaîne de caractères traduisant les listes de la fonction bézou
+    """
+    chaine = f"{liste_bezou[0]} = "
+    chaine += f"({liste_bezou[1][0]} * {liste_bezou[1][1]}) "
+    chaine += f"({liste_bezou[2][0]} * {liste_bezou[2][1]})"
+    return chaine
+
 def bezou(a,b):
     """Fonction retournant les coefs de Bézou.
 
