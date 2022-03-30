@@ -16,13 +16,13 @@ if response.ok:
     for i in range(1, len(tr)):
         td = tr[i].findAll("td")
         decalage = 0
-        numero = td[0].getText().replace("\n", "")
+        numero = td[0].get_text().replace("\n", "")
         # Si jamais la case 1 n'est pas un numéro, alors c'est une forme alternative, tous les éléments sont décalés d'un
         if (not numero.isdigit() and numero != "—"): # Les cases avec le signe "-" sont celles qui n'ont pas de numéros, mais qui ne sont pas des formes alternatives
             decalage = 1 # On attribue donc un décalage de 1
         # Récupère les noms sans les retours à la ligne
-        nom_fr = td[2 - decalage].getText().replace("\n", "")
-        nom_en = td[3 - decalage].getText().replace("\n", "")
+        nom_fr = td[2 - decalage].get_text(separator=" ").replace("\n", "")
+        nom_en = td[3 - decalage].get_text(separator=" ").replace("\n", "")
         if nom_fr not in dico_noms_langues.keys(): # Si le nom_fr n'est pas présent dans les clés du dico, l'ajoute avec en valeur nmom_en
             dico_noms_langues[nom_fr] = nom_en
     # Push le dictionnaire dans le fichier JSON
