@@ -1,4 +1,5 @@
 import requests
+import json
 from bs4 import BeautifulSoup
 
 url = 'https://www.pokepedia.fr/Liste_des_Pok%C3%A9mon_dans_l%27ordre_du_Pok%C3%A9dex_National'
@@ -19,3 +20,6 @@ if response.ok:
         nom_en = td[3].getText().replace("\n", "")
         if nom_fr not in dico_noms_langues.keys(): # Si le nom_fr n'est pas présent dans les clés du dico, l'ajoute avec en valeur nmom_en
             dico_noms_langues[nom_fr] = nom_en
+    # Push le dictionnaire dans le fichier JSON
+    with open("noms_pokemon_fr_en.json", "w") as fichierJSON:
+        json.dump(dico_noms_langues, fichierJSON)
