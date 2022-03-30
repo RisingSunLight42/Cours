@@ -10,9 +10,12 @@ if response.ok:
     table = soup.find("table", class_="tableaustandard") # Récupère la table des noms pokemons
     body = table.find("tbody") # Récupère le body de la table
     tr = body.findAll("tr") # Récupère mes row de la table
+    dico_noms_langues = {} # Initialise le dictionnaire
     # Parcours la liste des rangées par élément pour obtenir chaque case françaises et anglaise et obtenir le nom du pokemon
     for i in range(1, len(tr) - 1):
         td = tr[i].findAll("td")
-        nom_fr = td[2].getText()
-        nom_en = td[3].getText()
-        print(nom_fr, nom_en)
+        # Récupère les noms sans les retours à la ligne
+        nom_fr = td[2].getText().replace("\n", "")
+        nom_en = td[3].getText().replace("\n", "")
+        if nom_fr not in dico_noms_langues.keys(): # Si le nom_fr n'est pas présent dans les clés du dico, l'ajoute avec en valeur nmom_en
+            dico_noms_langues[nom_fr] = nom_en
