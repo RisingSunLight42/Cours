@@ -21,8 +21,8 @@ if response.ok:
         if (not numero.isdigit() and numero != "—"): # Les cases avec le signe "-" sont celles qui n'ont pas de numéros, mais qui ne sont pas des formes alternatives
             decalage = 1 # On attribue donc un décalage de 1
         # Récupère les noms sans les retours à la ligne
-        nom_fr = td[2 - decalage].get_text(separator=" ").replace("\n", "").strip()
-        nom_en = td[3 - decalage].get_text(separator=" ").replace("\n", "").strip()
+        nom_fr = td[2 - decalage].get_text(separator=" ").replace("\n", "").strip().lower()
+        nom_en = td[3 - decalage].get_text(separator=" ").replace("\n", "").strip().lower()
         if nom_fr not in dico_noms_langues.keys(): # Si le nom_fr n'est pas présent dans les clés du dico, l'ajoute avec en valeur nmom_en
             dico_noms_langues[nom_fr] = nom_en
     # Push le dictionnaire dans le fichier JSON
