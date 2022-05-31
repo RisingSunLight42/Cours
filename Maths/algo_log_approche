@@ -1,0 +1,16 @@
+from math import sqrt
+
+
+def approche_log(valeur_log, approximation):
+    limite_basse = 1
+    limite_haute = 10
+    log_limite_basse = 0
+    log_limite_haute = 1
+    while limite_haute - valeur_log > 10**(-approximation):
+        if sqrt(limite_basse * limite_haute) <= valeur_log:
+            limite_basse = sqrt(limite_basse * limite_haute)
+            log_limite_basse = (log_limite_basse + log_limite_haute) / 2
+        else:
+            limite_haute = sqrt(limite_basse * limite_haute)
+            log_limite_haute = (log_limite_basse + log_limite_haute) / 2
+    return log_limite_haute
