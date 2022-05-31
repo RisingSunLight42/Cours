@@ -23,7 +23,7 @@ if response.ok:
         # Récupère les noms sans les retours à la ligne
         nom_fr = td[2 - decalage].get_text(separator=" ").replace("\n", "").strip().lower()
         nom_en = td[3 - decalage].get_text(separator=" ").replace("\n", "").strip().lower()
-        if nom_fr not in dico_noms_langues.keys(): # Si le nom_fr n'est pas présent dans les clés du dico, l'ajoute avec en valeur nmom_en
+        if nom_fr not in dico_noms_langues.keys(): # Si le nom_fr n'est pas présent dans les clés du dico, l'ajoute avec en valeur nom_en
             dico_noms_langues[nom_fr] = nom_en
     # Push le dictionnaire dans le fichier JSON
     with open("noms_pokemon_fr_en.json", "w") as fichierJSON:
