@@ -29,8 +29,7 @@ def info_pokemon(nom):
         return None                  # on renvoie None
     url = f"https://pokeapi.co/api/v2/pokemon/{nom[1]}/" # Sinon on met le nom du pokemon dans l'url
     
-    reponse = requests.get(url)      # On recupère les informations dans l'API
-    contenu_txt = reponse.text       
+    reponse = requests.get(url)      # On recupère les informations dans l'API     
     contenu = reponse.json()         
     
     infos  = {
