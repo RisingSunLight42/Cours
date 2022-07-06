@@ -1,4 +1,4 @@
-package java_tutorial;
+package formation_video;
 
 public class MainApp {
     public static void main(String[] args) {
