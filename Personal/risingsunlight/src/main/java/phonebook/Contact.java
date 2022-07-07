@@ -39,7 +39,6 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "Nom : " + this.lastName + "\n" + "Prénom : " + this.firstName + "\n" + "Numéro de téléphone : "
-                + this.phoneNumber;
+        return this.lastName + " " + this.firstName + " " + this.phoneNumber;
     }
 }
