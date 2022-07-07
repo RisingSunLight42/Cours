@@ -14,7 +14,7 @@ public class Contact {
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
@@ -22,7 +22,7 @@ public class Contact {
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -30,10 +30,16 @@ public class Contact {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return this.phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Nom : " + this.lastName + "\n" + "Prénom : " + this.firstName + "\n" + "Numéro de téléphone : "
+                + this.phoneNumber;
     }
 }
