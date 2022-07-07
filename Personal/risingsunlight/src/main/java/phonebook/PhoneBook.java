@@ -20,6 +20,9 @@ public class PhoneBook {
         String phoneNumber = getUserInput("Entrez le numéro de téléphone :");
 
         userInputScanner.close(); // Ferme le scanner, doit être fermé pour des soucis de perfs
+
+        Contact newContact = new Contact(lastName, firstName, phoneNumber);
+        System.out.println(newContact);
     }
 
     public static String getUserInput(String message) {
