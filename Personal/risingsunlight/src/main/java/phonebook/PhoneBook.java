@@ -12,6 +12,7 @@ import java.util.Scanner;
  */
 public class PhoneBook {
 
+    public static final String PHONE_BOOK_FILE_PATH = "Personal\\risingsunlight\\src\\main\\java\\phonebook\\phonebook.txt";
     public static Scanner userInputScanner = null;
 
     public static void main(String[] args) {
@@ -27,18 +28,9 @@ public class PhoneBook {
 
         Contact newContact = new Contact(lastName, firstName, phoneNumber); // Crée un nouveau contact
 
-        File phoneBookFile = getOrCreatePhoneBookFile(
-                "Personal\\risingsunlight\\src\\main\\java\\phonebook\\phonebook.txt"); // Récupère le fichier phonebook
+        File phoneBookFile = getOrCreatePhoneBookFile(PHONE_BOOK_FILE_PATH); // Récupère le fichier phonebook
 
-        try {
-            BufferedWriter fileWriter = new BufferedWriter(new FileWriter(phoneBookFile, true));
-            fileWriter.append(newContact.toString() + "\n");
-            System.out.println("Contact ajouté !");
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        updatePhoneBook(phoneBookFile, newContact); // Met à jour le phonebook
     }
 
     public static String getUserInput(String message) {
@@ -63,5 +55,16 @@ public class PhoneBook {
         }
 
         return null;
+    }
+
+    public static void updatePhoneBook(File phoneBookFile, Contact newContact) {
+        // Déclarer le fileWriter dans le try permet de le fermer automatiquement après
+        try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(phoneBookFile, true))) {
+            fileWriter.append(newContact.toString());
+            fileWriter.append(System.lineSeparator()); // Permet d'avoir la bonne séparation de ligne suivant l'OS
+            System.out.println("Contact ajouté !");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
