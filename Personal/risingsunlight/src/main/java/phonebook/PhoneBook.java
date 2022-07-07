@@ -1,5 +1,9 @@
 package phonebook;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -21,8 +25,30 @@ public class PhoneBook {
 
         userInputScanner.close(); // Ferme le scanner, doit être fermé pour des soucis de perfs
 
-        Contact newContact = new Contact(lastName, firstName, phoneNumber);
-        System.out.println(newContact);
+        Contact newContact = new Contact(lastName, firstName, phoneNumber); // Crée un nouveau contact
+
+        // Récupère le fichier du phonebook
+        File phoneBookFile = new File(
+                "Personal\\risingsunlight\\src\\main\\java\\phonebook\\phonebook.txt");
+
+        if (phoneBookFile.exists()) {
+            try {
+                BufferedWriter fileWriter = new BufferedWriter(new FileWriter(phoneBookFile, true));
+                fileWriter.append(newContact.toString());
+                System.out.println("Contact ajouté !");
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                phoneBookFile.createNewFile();
+                System.out.println("Le fichier a bien été créé.");
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Le fichier n'existe pas et je n'ai pas pu le créer.");
+            }
+        }
     }
 
     public static String getUserInput(String message) {
