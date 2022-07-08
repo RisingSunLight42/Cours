@@ -21,22 +21,25 @@ public class PhoneBook {
 
         while (userChoice != 6) {
             userChoice = getUserChoice();
-            System.out.println(userChoice);
 
-            // Rechercher un Contact
-
-            // Voir les Contacts
-
-            // Enregistrer un Contact
-            registerContact();
-
-            // Supprimer un Contact
-
-            // Modifier un Contact
-
-            // Quitter le phonebook
+            switch (userChoice) {
+                case 1:
+                    getContact();
+                    break;
+                case 2:
+                    fetchContacts();
+                    break;
+                case 3:
+                    registerContact();
+                    break;
+                case 4:
+                    deleteContact();
+                    break;
+                case 5:
+                    editContact();
+            }
         }
-
+        System.out.println("Merci d'avoir choisi notre annuaire téléphonique !");
     }
 
     public static int getUserChoice() {
@@ -61,6 +64,12 @@ public class PhoneBook {
             return getUserChoice();
         }
         return userChoice;
+    }
+
+    public static void getContact() {
+    }
+
+    public static void fetchContacts() {
     }
 
     public static void registerContact() {
@@ -113,5 +122,11 @@ public class PhoneBook {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void deleteContact() {
+    }
+
+    public static void editContact() {
     }
 }
