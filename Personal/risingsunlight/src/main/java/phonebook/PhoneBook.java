@@ -16,7 +16,10 @@ public class PhoneBook {
     public static Scanner userInputScanner = null;
 
     public static void main(String[] args) {
+        registerContact();
+    }
 
+    public static void registerContact() {
         userInputScanner = new Scanner(System.in);
 
         // * Récupère les infos utilisateurs
