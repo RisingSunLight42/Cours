@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -20,6 +21,7 @@ public class PhoneBook {
 
         while (userChoice != 6) {
             userChoice = getUserChoice();
+            System.out.println(userChoice);
 
             // Rechercher un Contact
 
@@ -38,6 +40,7 @@ public class PhoneBook {
     }
 
     public static int getUserChoice() {
+        int userChoice = 0;
         System.out.println("Que voulez-vous faire sur l'annuaire téléphonique ? ");
         System.out.println("(1) - Rechercher un Contact");
         System.out.println("(2) - Voir les Contacts");
@@ -46,8 +49,14 @@ public class PhoneBook {
         System.out.println("(5) - Modifier un Contact");
         System.out.println("(6) - Quitter l'annuaire");
         userInputScanner = new Scanner(System.in);
-        int userChoice = userInputScanner.nextInt();
-        if (userChoice < 1 && userChoice > 6) {
+        try {
+            userChoice = userInputScanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out
+                    .println("Tu ne m'as pas donné un nombre ! Choisis bien un nombre associé à l'action souhaitée !");
+            return getUserChoice();
+        }
+        if (userChoice < 1 || userChoice > 6) {
             System.out.println("Le choix que tu m'as donné est incorrect !");
             return getUserChoice();
         }
