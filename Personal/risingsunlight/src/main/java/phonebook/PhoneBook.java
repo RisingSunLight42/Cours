@@ -16,7 +16,42 @@ public class PhoneBook {
     public static Scanner userInputScanner = null;
 
     public static void main(String[] args) {
-        registerContact();
+        int userChoice = 0;
+
+        while (userChoice != 6) {
+            userChoice = getUserChoice();
+
+            // Rechercher un Contact
+
+            // Voir les Contacts
+
+            // Enregistrer un Contact
+            registerContact();
+
+            // Supprimer un Contact
+
+            // Modifier un Contact
+
+            // Quitter le phonebook
+        }
+
+    }
+
+    public static int getUserChoice() {
+        System.out.println("Que voulez-vous faire sur l'annuaire téléphonique ? ");
+        System.out.println("(1) - Rechercher un Contact");
+        System.out.println("(2) - Voir les Contacts");
+        System.out.println("(3) - Enregistrer un Contact");
+        System.out.println("(4) - Supprimer un Contact");
+        System.out.println("(5) - Modifier un Contact");
+        System.out.println("(6) - Quitter l'annuaire");
+        userInputScanner = new Scanner(System.in);
+        int userChoice = userInputScanner.nextInt();
+        if (userChoice < 1 && userChoice > 6) {
+            System.out.println("Le choix que tu m'as donné est incorrect !");
+            return getUserChoice();
+        }
+        return userChoice;
     }
 
     public static void registerContact() {
