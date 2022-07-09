@@ -49,6 +49,11 @@ public class PhoneBook {
         System.out.println("Merci d'avoir choisi notre annuaire téléphonique !");
     }
 
+    /**
+     * Show the possibles choices for the user and return the user choice
+     * 
+     * @return the user choice
+     */
     public static int getUserChoice() {
         int userChoice = 0;
         System.out.println("Que voulez-vous faire sur l'annuaire téléphonique ? ");
@@ -75,6 +80,11 @@ public class PhoneBook {
     public static void getContact() {
     }
 
+    /**
+     * Read the file containing all the informations of the phonebook and return it
+     * 
+     * @return a List of Contact
+     */
     public static List<Contact> readPhoneBookFile() {
         File phoneBookFile = getOrCreatePhoneBookFile(PHONE_BOOK_FILE_PATH);
         List<Contact> contactsArray = new ArrayList<Contact>();
@@ -91,6 +101,9 @@ public class PhoneBook {
         return contactsArray;
     }
 
+    /**
+     * Fetch the Contacts' List and show it
+     */
     public static void fetchContacts() {
         List<Contact> contactsArray = readPhoneBookFile();
         Iterator<Contact> contactsIterator = contactsArray.iterator();
@@ -99,6 +112,10 @@ public class PhoneBook {
         }
     }
 
+    /**
+     * Register a new {@link Contact} with the lastName, firstName and the
+     * phoneNumber
+     */
     public static void registerContact() {
         // * Récupère les infos utilisateurs
         String lastName = getUserInput("Entrez le nom de famille :");
@@ -112,11 +129,23 @@ public class PhoneBook {
         updatePhoneBook(phoneBookFile, newContact); // Met à jour le phonebook
     }
 
+    /**
+     * Get the user input for a specified message.
+     * 
+     * @param message - the message to show to the user
+     * @return the user input
+     */
     public static String getUserInput(String message) {
         System.out.println(message);
         return userInputScanner.nextLine();
     }
 
+    /**
+     * Get or Create the phonebook's file and return it
+     * 
+     * @param phoneBookFilePath - the supposed path of the file
+     * @return The phonebook's file
+     */
     public static File getOrCreatePhoneBookFile(String phoneBookFilePath) {
         File phoneBookFile = new File(phoneBookFilePath);
 
@@ -136,6 +165,12 @@ public class PhoneBook {
         return null;
     }
 
+    /**
+     * Update the phonebook with the new Contact
+     * 
+     * @param phoneBookFile - the phonebook's file
+     * @param newContact    - the new {@link Contact} to add
+     */
     public static void updatePhoneBook(File phoneBookFile, Contact newContact) {
         // Déclarer le fileWriter dans le try permet de le fermer automatiquement après
         try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(phoneBookFile, true))) {
