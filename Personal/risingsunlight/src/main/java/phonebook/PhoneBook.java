@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -91,6 +92,11 @@ public class PhoneBook {
     }
 
     public static void fetchContacts() {
+        List<Contact> contactsArray = readPhoneBookFile();
+        Iterator<Contact> contactsIterator = contactsArray.iterator();
+        while (contactsIterator.hasNext()) {
+            System.out.println(contactsIterator.next());
+        }
     }
 
     public static void registerContact() {
