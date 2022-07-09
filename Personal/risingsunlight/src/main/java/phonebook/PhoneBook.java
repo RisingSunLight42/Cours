@@ -1,7 +1,9 @@
 package phonebook;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.InputMismatchException;
@@ -18,6 +20,7 @@ public class PhoneBook {
 
     public static void main(String[] args) {
         int userChoice = 0;
+        userInputScanner = new Scanner(System.in);
 
         while (userChoice != 6) {
             userChoice = getUserChoice();
@@ -39,6 +42,7 @@ public class PhoneBook {
                     editContact();
             }
         }
+        userInputScanner.close();
         System.out.println("Merci d'avoir choisi notre annuaire téléphonique !");
     }
 
@@ -51,9 +55,8 @@ public class PhoneBook {
         System.out.println("(4) - Supprimer un Contact");
         System.out.println("(5) - Modifier un Contact");
         System.out.println("(6) - Quitter l'annuaire");
-        userInputScanner = new Scanner(System.in);
         try {
-            userChoice = userInputScanner.nextInt();
+            userChoice = Integer.parseInt(userInputScanner.nextLine());
         } catch (InputMismatchException e) {
             System.out
                     .println("Tu ne m'as pas donné un nombre ! Choisis bien un nombre associé à l'action souhaitée !");
@@ -69,18 +72,17 @@ public class PhoneBook {
     public static void getContact() {
     }
 
+    public static void readPhoneBookFile() {
+    }
+
     public static void fetchContacts() {
     }
 
     public static void registerContact() {
-        userInputScanner = new Scanner(System.in);
-
         // * Récupère les infos utilisateurs
         String lastName = getUserInput("Entrez le nom de famille :");
         String firstName = getUserInput("Entrez le prénom :");
         String phoneNumber = getUserInput("Entrez le numéro de téléphone :");
-
-        userInputScanner.close(); // Ferme le scanner, doit être fermé pour des soucis de perfs
 
         Contact newContact = new Contact(lastName, firstName, phoneNumber); // Crée un nouveau contact
 
