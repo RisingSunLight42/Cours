@@ -6,7 +6,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -72,7 +74,20 @@ public class PhoneBook {
     public static void getContact() {
     }
 
-    public static void readPhoneBookFile() {
+    public static List<Contact> readPhoneBookFile() {
+        File phoneBookFile = getOrCreatePhoneBookFile(PHONE_BOOK_FILE_PATH);
+        List<Contact> contactsArray = new ArrayList<Contact>();
+        try (BufferedReader fileReader = new BufferedReader(new FileReader(phoneBookFile))) {
+            String line = null;
+            while ((line = fileReader.readLine()) != null) {
+                String[] contactInfoStrings = line.split(" ");
+                contactsArray.add(new Contact(contactInfoStrings[0], contactInfoStrings[1],
+                        contactInfoStrings[2]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return contactsArray;
     }
 
     public static void fetchContacts() {
