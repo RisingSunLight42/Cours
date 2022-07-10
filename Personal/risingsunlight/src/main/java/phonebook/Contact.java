@@ -13,6 +13,11 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
+    public boolean correspond(String stringToCompare) {
+        return lastName.contains(stringToCompare) || firstName.contains(stringToCompare)
+                || phoneNumber.contains(stringToCompare);
+    }
+
     public String getLastName() {
         return this.lastName;
     }
