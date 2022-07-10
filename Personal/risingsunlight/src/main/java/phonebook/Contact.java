@@ -14,8 +14,7 @@ public class Contact {
     }
 
     public boolean correspond(String stringToCompare) {
-        return lastName.contains(stringToCompare) || firstName.contains(stringToCompare)
-                || phoneNumber.contains(stringToCompare);
+        return toString().contains(stringToCompare);
     }
 
     public String getLastName() {
