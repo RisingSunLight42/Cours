@@ -128,7 +128,7 @@ public class PhoneBook {
         // * Récupère les infos utilisateurs
         String lastName = getUserInput("Entrez le nom de famille :");
         String firstName = getUserInput("Entrez le prénom :");
-        String phoneNumber = getUserInput("Entrez le numéro de téléphone :");
+        String phoneNumber = getPhoneNumber("Entrez le numéro de téléphone :");
 
         Contact newContact = new Contact(lastName, firstName, phoneNumber); // Crée un nouveau contact
 
@@ -146,6 +146,27 @@ public class PhoneBook {
     public static String getUserInput(String message) {
         System.out.println(message);
         return userInputScanner.nextLine();
+    }
+
+    public static String getPhoneNumber(String message) {
+        String phoneNumber = getUserInput(message);
+        if (phoneNumber.length() != 10) {
+            System.out.println("La taille du numéro de téléphone donné est incorrecte ! Elle doit faire 10 numéros !");
+            return getPhoneNumber(message);
+        } else if (!checkOnlyDigit(phoneNumber)) {
+            System.out.println("Le numéro de téléphone que tu m'as donné contient des lettres ! Il est invalide");
+            return getPhoneNumber(message);
+        }
+        return phoneNumber;
+    }
+
+    public static boolean checkOnlyDigit(String stringToCheck) {
+        char[] charArrayToCheck = stringToCheck.toCharArray();
+        for (char character : charArrayToCheck) {
+            if (!Character.isDigit(character))
+                return false;
+        }
+        return true;
     }
 
     /**
