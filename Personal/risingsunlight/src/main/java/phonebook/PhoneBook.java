@@ -19,6 +19,7 @@ import java.util.Scanner;
 public class PhoneBook {
 
     public static final String PHONE_BOOK_FILE_PATH = "Personal\\risingsunlight\\src\\main\\java\\phonebook\\phonebook.txt";
+    public static final String TEMP_PHONE_BOOK_FILE_PATH = "Personal\\risingsunlight\\src\\main\\java\\phonebook\\phonebook_2.txt";
     public static Scanner userInputScanner = null;
 
     public static void main(String[] args) {
@@ -113,8 +114,8 @@ public class PhoneBook {
      * Fetch the Contacts' List and show it
      */
     public static void fetchContacts() {
-        List<Contact> contactsArray = readPhoneBookFile();
-        Iterator<Contact> contactsIterator = contactsArray.iterator();
+        List<Contact> contactsList = readPhoneBookFile();
+        Iterator<Contact> contactsIterator = contactsList.iterator();
         while (contactsIterator.hasNext()) {
             System.out.println(contactsIterator.next());
         }
@@ -135,6 +136,7 @@ public class PhoneBook {
         File phoneBookFile = getOrCreatePhoneBookFile(PHONE_BOOK_FILE_PATH); // Récupère le fichier phonebook
 
         updatePhoneBook(phoneBookFile, newContact); // Met à jour le phonebook
+        System.out.println("Contact ajouté !");
     }
 
     /**
@@ -205,13 +207,24 @@ public class PhoneBook {
         try (BufferedWriter fileWriter = new BufferedWriter(new FileWriter(phoneBookFile, true))) {
             fileWriter.append(newContact.toString());
             fileWriter.append(System.lineSeparator()); // Permet d'avoir la bonne séparation de ligne suivant l'OS
-            System.out.println("Contact ajouté !");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void deleteContact() {
+        String contactToDelete = getUserInput("Donnez le contact à supprimer");
+        List<Contact> contactsList = readPhoneBookFile();
+        Iterator<Contact> contactsIterator = contactsList.iterator();
+        File phoneBookFile = getOrCreatePhoneBookFile(PHONE_BOOK_FILE_PATH);
+        File tempPhoneBookFile = getOrCreatePhoneBookFile(TEMP_PHONE_BOOK_FILE_PATH);
+        while (contactsIterator.hasNext()) {
+            Contact contactToCheck = contactsIterator.next();
+            if (!contactToCheck.correspond(contactToDelete))
+                updatePhoneBook(tempPhoneBookFile, contactToCheck);
+        }
+        phoneBookFile.delete();
+        tempPhoneBookFile.renameTo(phoneBookFile);
     }
 
     public static void editContact() {
