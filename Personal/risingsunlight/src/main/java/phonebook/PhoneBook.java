@@ -78,6 +78,14 @@ public class PhoneBook {
     }
 
     public static void getContact() {
+        List<Contact> contactsArray = readPhoneBookFile();
+        Iterator<Contact> contactsIterator = contactsArray.iterator();
+        String recherche = getUserInput("Quel contact recherchez-vous ?");
+        while (contactsIterator.hasNext()) {
+            Contact contact = contactsIterator.next();
+            if (contact.correspond(recherche))
+                System.out.println(contact);
+        }
     }
 
     /**
