@@ -24,6 +24,7 @@ public class PhoneBook {
 
     public static void main(String[] args) {
         int userChoice = 0;
+        new Window();
         userInputScanner = new Scanner(System.in);
 
         while (userChoice != 6) {
