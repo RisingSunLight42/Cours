@@ -1,9 +1,14 @@
 package phonebook;
 
+import java.awt.Color;
+import java.awt.BorderLayout;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.FontUIResource;
 
 public class Window extends JFrame {
     /**
@@ -11,7 +16,10 @@ public class Window extends JFrame {
      */
     public Window() {
         createWindow();
-        createLabel("Hello");
+        // JPanel panelHello = createPanel(0, 0, 250, 250);
+        JPanel panelHello = createPanel(0, 0, 250, 250);
+        createLabel("Hello", 20, panelHello);
+        this.add(panelHello);
         this.setVisible(true);
     }
 
@@ -21,6 +29,7 @@ public class Window extends JFrame {
         this.setTitle("Phonebook");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // by default, it's HIDE_ON_CLOSE
         this.setResizable(false);
+        this.setLayout(null);
         this.setSize(420, 420);
 
         ImageIcon icon = new ImageIcon("Personal\\risingsunlight\\phonebook_icon.png");
@@ -28,12 +37,23 @@ public class Window extends JFrame {
         this.getContentPane().setBackground(new ColorUIResource(255, 255, 255));
     }
 
-    private void createLabel(String labelText) {
+    private JPanel createPanel(int positionX, int positionY, int width, int height) {
+        // JLabel = a GUI display area for a string of text, an image, or both
+
+        JPanel panel = new JPanel();
+        panel.setBounds(positionX, positionY, width, height);
+        panel.setBackground(Color.CYAN);
+        panel.setLayout(new BorderLayout());
+        return panel;
+    }
+
+    private void createLabel(String labelText, int fontSize, JPanel panelToAdd) {
         // JLabel = a GUI display area for a string of text, an image, or both
 
         JLabel label = new JLabel(labelText);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setVerticalAlignment(JLabel.CENTER);
-        this.add(label);
+        label.setFont(new FontUIResource("Times New Roman", FontUIResource.PLAIN, fontSize));
+        panelToAdd.add(label);
     }
 }
