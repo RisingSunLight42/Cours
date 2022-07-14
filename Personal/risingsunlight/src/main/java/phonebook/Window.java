@@ -2,6 +2,8 @@ package phonebook;
 
 import java.awt.Color;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,18 +13,31 @@ import javax.swing.JPanel;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.FontUIResource;
 
-public class Window extends JFrame {
+public class Window extends JFrame implements ActionListener {
     /**
      * Tutorial video link : https://www.youtube.com/watch?v=Kmgo00avvEw
      */
+
+    private JButton button;
+
     public Window() {
         createWindow();
-        // JPanel panelHello = createPanel(0, 0, 250, 250);
         JPanel panelHello = createPanel(0, 0, 250, 250);
+        JPanel panelTest = createPanel(250, 0, 250, 250);
         createLabel("Hello", 20, panelHello);
-        createButton(panelHello);
+        button = new JButton();
+        button.addActionListener(this);
+        panelTest.add(button);
         this.add(panelHello);
+        this.add(panelTest);
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == button) {
+            System.out.println("hello");
+        }
     }
 
     private void createWindow() {
@@ -57,12 +72,5 @@ public class Window extends JFrame {
         label.setVerticalAlignment(JLabel.CENTER);
         label.setFont(new FontUIResource("Times New Roman", FontUIResource.PLAIN, fontSize));
         panelToAdd.add(label);
-    }
-
-    private void createButton(JPanel panelToAdd) {
-        // JButton = a button that performs an action when clicked on
-
-        JButton button = new JButton();
-        panelToAdd.add(button);
     }
 }
