@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.BorderLayout;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,6 +20,7 @@ public class Window extends JFrame {
         // JPanel panelHello = createPanel(0, 0, 250, 250);
         JPanel panelHello = createPanel(0, 0, 250, 250);
         createLabel("Hello", 20, panelHello);
+        createButton(panelHello);
         this.add(panelHello);
         this.setVisible(true);
     }
@@ -38,7 +40,7 @@ public class Window extends JFrame {
     }
 
     private JPanel createPanel(int positionX, int positionY, int width, int height) {
-        // JLabel = a GUI display area for a string of text, an image, or both
+        // JPanel = a component which contain other components
 
         JPanel panel = new JPanel();
         panel.setBounds(positionX, positionY, width, height);
@@ -55,5 +57,12 @@ public class Window extends JFrame {
         label.setVerticalAlignment(JLabel.CENTER);
         label.setFont(new FontUIResource("Times New Roman", FontUIResource.PLAIN, fontSize));
         panelToAdd.add(label);
+    }
+
+    private void createButton(JPanel panelToAdd) {
+        // JButton = a button that performs an action when clicked on
+
+        JButton button = new JButton();
+        panelToAdd.add(button);
     }
 }
