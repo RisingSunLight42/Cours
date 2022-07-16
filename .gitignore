@@ -58,3 +58,7 @@ Lycee/NSI/Projet_bot_discord_pokedex/token.txt
 .vscode
 Personal/risingsunlight/src/main/java/phonebook/phonebook.txt
 Personal/risingsunlight/target/classes/phonebook/phonebook.txt
+Personal/calculator_rsl/.editorconfig
+Personal/calculator_rsl/target/classes/calculator/Calculator.class
+.gitignore
+Personal/calculator_rsl/target/test-classes/calculator/AppTest.class
